@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SiteWatch — Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <header class="hud-bar">
+    <div class="brand-row">
+      <div class="brand-mark">◎</div>
+      <div class="brand-name">Site<span>Watch</span></div>
+    </div>
+
+    <div class="hud-stats">
+      <div class="hud-stat"><b id="statTotal">0</b>TRACKED</div>
+      <div class="hud-stat up"><b id="statUp">0</b>UP</div>
+      <div class="hud-stat down"><b id="statDown">0</b>DOWN</div>
+      <div class="hud-stat"><b id="statAvg">—</b>AVG MS</div>
+    </div>
+
+    <div class="user-chip">
+      <div class="avatar" id="userAvatar">?</div>
+      <span id="userName">…</span>
+      <button class="logout-btn" id="logoutBtn">Sign out</button>
+    </div>
+  </header>
+
+  <main class="main-wrap">
+    <section class="search-panel">
+      <h1>Check any site</h1>
+      <p class="sub">Enter a URL to test reachability right now, then add it to your watchlist for continuous monitoring.</p>
+      <div class="search-row">
+        <input type="text" id="searchInput" placeholder="e.g. github.com or https://example.com" autocomplete="off">
+        <button id="searchBtn">Check status</button>
+      </div>
+
+      <div class="search-result" id="searchResult">
+        <div class="status-dot" id="srDot"></div>
+        <div class="sr-main">
+          <div class="sr-url" id="srUrl">—</div>
+          <div class="sr-meta" id="srMeta">—</div>
+        </div>
+        <button class="add-btn" id="srAddBtn">+ Add to watchlist</button>
+      </div>
+    </section>
+
+    <div class="section-heading">
+      <h2>Your watchlist</h2>
+      <span class="count" id="watchCount">0 sites · down first</span>
+    </div>
+
+    <div id="watchlistGrid" class="watchlist-grid"></div>
+    <div id="emptyState" class="empty-state" style="display:none;">
+      <b>Nothing tracked yet</b>
+      Search for a site above and add it — down sites will always float to the top of this list so you notice them first.
+    </div>
+  </main>
+</div>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<!-- Chatbot widget -->
+<button class="chatbot-launcher" id="chatLauncher" aria-label="Open help chat">
+  <span class="ping"></span>
+  💬
+</button>
+<div class="chatbot-panel" id="chatPanel">
+  <div class="chatbot-head">
+    <div class="dot"></div>
+    <div>
+      <strong>Watchbot</strong><br>
+      <span>Monitoring assistant</span>
+    </div>
+    <button class="chatbot-close" id="chatClose" aria-label="Close chat">✕</button>
+  </div>
+  <div class="chatbot-body" id="chatBody">
+    <div class="msg bot">Hey! I'm Watchbot. Ask me how to add a site, what the colors mean, or how the graphs work.</div>
+  </div>
+  <div class="chatbot-quick">
+    <button class="chip-btn" data-q="How do I add a site?">Add a site</button>
+    <button class="chip-btn" data-q="What does the red dot mean?">Red dot?</button>
+    <button class="chip-btn" data-q="How often are sites checked?">Check interval</button>
+  </div>
+  <div class="chatbot-input-row">
+    <input type="text" id="chatInput" placeholder="Ask Watchbot…" autocomplete="off">
+    <button id="chatSend" aria-label="Send">➤</button>
+  </div>
+</div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

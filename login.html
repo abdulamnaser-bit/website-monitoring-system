@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SiteWatch — Sign in</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="auth-shell">
+  <div class="radar"><div class="radar-sweep"></div></div>
+
+  <div class="auth-card">
+    <div class="brand-row">
+      <div class="brand-mark">◎</div>
+      <div class="brand-name">Site<span>Watch</span></div>
+    </div>
+
+    <h1>Operator sign-in</h1>
+    <p class="sub">Monitor uptime, response time and status across every site on your watch.</p>
+
+    <div class="form-msg" id="formMsg"></div>
+
+    <form id="loginForm" autocomplete="off">
+      <div class="field">
+        <label for="email">Email / username</label>
+        <div class="input-wrap">
+          <input type="text" id="email" name="email" placeholder="you@company.com" required autocomplete="username">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <div class="input-wrap">
+          <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
+          <button type="button" class="toggle-visibility" id="toggleVis">SHOW</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="captchaInput">Security check</label>
+        <div class="captcha-row">
+          <img id="captchaImg" class="captcha-image" alt="Captcha — click to refresh" title="Click to refresh">
+          <button type="button" class="captcha-refresh" id="captchaRefresh" title="New captcha" aria-label="Refresh captcha">⟳</button>
+          <div class="input-wrap" style="flex:1">
+            <input type="text" id="captchaInput" name="captchaInput" placeholder="Type the code" required autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+      </div>
+
+      <div class="row-between">
+        <span class="eyebrow-tag">SESSION · SECURE</span>
+        <button type="button" class="link-btn" id="forgotBtn">Forgot password?</button>
+      </div>
+
+      <button type="submit" class="btn-primary" id="submitBtn">Sign in</button>
+    </form>
+
+    <div class="divider">OR</div>
+
+    <button type="button" class="btn-google" id="googleBtn">
+      <svg width="17" height="17" viewBox="0 0 48 48" aria-hidden="true">
+        <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.9 32.6 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34.6 5.1 29.6 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.2-.1-2.3-.4-3.5z"/>
+        <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.8 1.1 8 3l6-6C34.6 6.1 29.6 4 24 4c-7.6 0-14.1 4.3-17.7 10.7z"/>
+        <path fill="#4CAF50" d="M24 44c5.5 0 10.4-1.9 14.2-5.1l-6.6-5.4C29.6 35.4 26.9 36 24 36c-5.3 0-9.8-3.4-11.3-8.1l-6.6 5.1C9.8 39.6 16.4 44 24 44z"/>
+        <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-1 2.9-2.9 5.3-5.3 6.9l6.6 5.4C39.9 37.8 44 31.9 44 24c0-1.2-.1-2.3-.4-3.5z"/>
+      </svg>
+      Continue with Google
+    </button>
+
+    <p class="foot-note">Don't have an account? <a href="#" id="showRegister">Create one</a></p>
+    <p class="demo-hint">Demo login → demo@sitewatch.io / demo1234</p>
+  </div>
+</div>
+
+<!-- Forgot password modal -->
+<div class="modal-backdrop" id="forgotModal">
+  <div class="modal-card">
+    <h2>Reset your password</h2>
+    <p class="sub">Enter the email on your account. We'll simulate sending a secure reset link (no mail server in this demo, so the link is shown directly below).</p>
+    <div class="form-msg" id="forgotMsg"></div>
+    <div class="field">
+      <label for="forgotEmail">Email</label>
+      <div class="input-wrap">
+        <input type="email" id="forgotEmail" placeholder="you@company.com">
+      </div>
+    </div>
+    <div class="modal-close-row">
+      <button class="btn-ghost" id="forgotCancel">Cancel</button>
+      <button class="btn-small-primary" id="forgotSubmit">Send link</button>
+    </div>
+  </div>
+</div>
+
+<!-- Register modal -->
+<div class="modal-backdrop" id="registerModal">
+  <div class="modal-card">
+    <h2>Create an account</h2>
+    <p class="sub">Set up operator access to your monitoring dashboard.</p>
+    <div class="form-msg" id="registerMsg"></div>
+    <div class="field">
+      <label for="regName">Name</label>
+      <div class="input-wrap"><input type="text" id="regName" placeholder="Ada Lovelace"></div>
+    </div>
+    <div class="field">
+      <label for="regEmail">Email</label>
+      <div class="input-wrap"><input type="email" id="regEmail" placeholder="you@company.com"></div>
+    </div>
+    <div class="field">
+      <label for="regPassword">Password</label>
+      <div class="input-wrap"><input type="password" id="regPassword" placeholder="At least 6 characters"></div>
+    </div>
+    <div class="modal-close-row">
+      <button class="btn-ghost" id="registerCancel">Cancel</button>
+      <button class="btn-small-primary" id="registerSubmit">Create account</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/login.js"></script>
+</body>
+</html>

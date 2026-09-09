@@ -1,0 +1,18 @@
+{
+  "name": "sitewatch",
+  "version": "1.0.0",
+  "description": "SiteWatch - website uptime monitoring dashboard with auth, captcha, watchlist, graphs and a chatbot",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "cookie-parser": "^1.4.6",
+    "jsonwebtoken": "^9.0.2",
+    "nanoid": "^3.3.7"
+  }
+}
