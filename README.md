@@ -37,3 +37,15 @@ password: demo1234
 - **Google login** is a stand-in. For real Google Sign-In, register an OAuth client in Google Cloud Console, redirect to Google's consent screen, and verify the returned ID token server-side (e.g. with `google-auth-library`) instead of the `/api/auth/google` mock in `server.js`.
 - **Forgot password** doesn't send real email (no SMTP configured) — the reset link is returned directly in the API response so the flow is fully testable. Wire up a provider like SendGrid/SES to email it for real.
 - **Storage** is flat JSON files under `data/` for simplicity — swap `db.js` for a real database in production.
+
+## Copyright
+
+Copyright © 2026 Abdul Naser. All rights reserved.
+
+This repository is provided for educational and portfolio viewing purposes. Reuse, redistribution, modification, or commercial use of this project's source code or substantial portions of its implementation requires permission from the author.
+
+The original source code, documentation, architecture, and implementation contained in this repository are the property of Abdul Naser.
+
+Third-party libraries, frameworks, dependencies, and other external components remain subject to their respective licenses.
+
+Unauthorized reproduction, redistribution, or republishing of the project's original source code or substantial portions of the implementation is not permitted without prior permission from the author.
