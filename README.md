@@ -1,3 +1,7 @@
+## 📸 Project Preview
+
+![SiteWatch Website Monitoring Dashboard](assets/sitewatch-preview.png)
+
 # SiteWatch
 
 A full-stack website uptime monitoring dashboard: HUD-styled login (username/password + captcha + a mock "Continue with Google" + forgot password), and a dashboard where you search any URL for up/down status, add it to a watchlist, and watch response-time sparklines update live. Down and degraded sites always sort to the top of the list. A rule-based chatbot ("Watchbot") sits in the bottom-left corner for in-app help.
